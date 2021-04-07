@@ -1,0 +1,6 @@
+- name: RHEL8 Servers
+  hosts: rhel_servers
+  tasks:
+    - name: Ping 
+      # use the Ping module of Ansible
+      ping: 

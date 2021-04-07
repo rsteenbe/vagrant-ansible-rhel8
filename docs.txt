@@ -1,0 +1,31 @@
+Run: 
+vagrant up
+vagrant ssh ansible
+
+Enter command:
+ansible all -m ping -i /vagrant/ansible/inventory
+
+Or:
+ansible target1 -m ping -i /vagrant/ansible/inventory
+ansible target2 -m ping -i /vagrant/ansible/inventory
+
+Disbable Host Key checking in:
+sudo nano ansible.cfg
+
+In vagrant already done, remove # in /etc/ansible/ansible.cfg:
+#host_key_checking = False
+
+Inventory and Playbook
+Inventory:
+Info about our target servers, example, db server, application or webserver
+Password and IP are in here.
+
+Playbook:
+A singe player to deploy an application and list all tasks we know, needs to be done to get it working.
+
+Command to run the playbook:
+cd /vagrant/ansible
+ansible-playbook playbook.yml -i inventory
+
+If Python 3 is installed on the host:
+ansible-playbook playbook.yml -i inventory -e 'ansible_python_interpreter=/usr/bin/python3'
