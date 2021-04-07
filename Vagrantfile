@@ -6,16 +6,13 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
-
+  config.ssh.insert_key = false
   config.vm.define "server1" do |server1|
-    server1.vm.box = "generic/rhel8"
-	
-	server1.vm.network 'forwarded_port', guest: 2222, host: 2222
-	server1.vm.network 'forwarded_port', guest: 29200, host: 29200
-  
+    server1.vm.box = "bento/centos-8"
 	server1.vm.network 'forwarded_port', guest: 5005, host: 5005
 	server1.vm.network 'forwarded_port', guest: 8787, host: 8787
 	server1.vm.network "private_network", ip: "192.168.50.10"
+	
 	server1.vm.provider "virtualbox" do |v|
 		v.memory = 4096
 		v.cpus = 2
@@ -24,13 +21,14 @@ Vagrant.configure("2") do |config|
     /bin/echo "================= Client Server 1 Running ================"
 
 	SHELL
-	#config.ssh.username = "vagrant"
-	#config.ssh.password = "vagrant"
-	#config.ssh.insert_key = false
+	
+	config.ssh.username = "vagrant"
+	config.ssh.password = "vagrant"
+	config.ssh.insert_key = false
   end
   
   config.vm.define "server2" do |server2|
-    server2.vm.box = "generic/rhel8"
+    server2.vm.box = "bento/centos-8"
 	
 	server2.vm.network 'forwarded_port', guest: 8181, host: 8181
 	server2.vm.network 'forwarded_port', guest: 29201, host: 29201
@@ -46,9 +44,9 @@ Vagrant.configure("2") do |config|
     /bin/echo "================= Client Server 2 Running ================"
 
 	SHELL
-	#config.ssh.username = "vagrant"
-	#config.ssh.password = "vagrant"
-	#config.ssh.insert_key = false
+	config.ssh.username = "vagrant"
+	config.ssh.password = "vagrant"
+	config.ssh.insert_key = false
   end
   
   config.vm.provision "shell", inline: "echo Provision 2 ubuntu/xenial64 boxes"
