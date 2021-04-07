@@ -1,4 +1,4 @@
-# Vagrant Box with Ansible
+# Vagrant Box with Ansible and RHEL8 target servers
 
 Two machines will be running after running the command:
 `vagrant up`
