@@ -1,0 +1,24 @@
+---
+- hosts: webserver
+  vars:
+    http_port: 80
+    max_clients: 200
+  remote_user: vagrant
+  become: yes
+  tasks:
+  - name: "apt-get update"
+    yum:
+      update_cache: yes
+      cache_valid_time: 3600
+
+  - name: "install nginx"
+    yum:
+      name: ['nginx']
+      state: latest
+
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
+
