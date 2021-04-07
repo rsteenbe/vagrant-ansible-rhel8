@@ -1,4 +1,4 @@
-# Vagrant Box with Ansible and RHEL8 target servers
+# Vagrant Box with Ansible and CentOS 8 target servers
 
 Two machines will be running after running the command:
 `vagrant up`
@@ -6,10 +6,13 @@ Two machines will be running after running the command:
 The first machine is the Ansible machine where you can make a connection through SSH:
 `vagrant ssh ansible`
 
+Password:
+`vagrant`
+
 The second machine is an empty machine where you can make a connection through SSH:
 `vagrant ssh server1`
 
-After running `vagrant ssh ansible` you can SSH to the empty machine:
+After running `vagrant ssh ansible` you can SSH to the CentOS machine:
 `ssh 192.168.50.10`
 
 Username:
